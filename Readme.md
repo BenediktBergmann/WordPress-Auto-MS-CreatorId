@@ -1,4 +1,4 @@
-# Auto Anchor
+# Auto MS CreatorID
 Auto MS Creator Id will automatically add your creator ID to all the applicable links on your website.
 
 ## Author
