@@ -1,4 +1,4 @@
-=== Auto Anchor ===
+=== Auto MS CreatorID ===
 Contributors: Benedikt Bergmann
 Stable tag: 1.0.0
 Tags: MS, Creator Id
