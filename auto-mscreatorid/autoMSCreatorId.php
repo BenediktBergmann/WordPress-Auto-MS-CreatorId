@@ -3,7 +3,7 @@
  * Plugin Name: Auto MS Creator ID
  * Plugin URI:  https://github.com/BenediktBergmann/WordPress-Anchor-Plugin
  * Description: Adds creator ID to every applicable link.
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Benedikt Bergmann
  * Author URI:  https://benediktbergmann.eu
  * Text Domain: Auto-MSCreatorID 
@@ -33,12 +33,12 @@ new AutoMSCreatorID_Admin();
 			
 			$link = $matches[1];
 
-			if(count($urlsArray) === 0 || strlen( $this->creator_id ) === 0 || $this->stringContainsArrayOneOf($link, $urlsArray) === false){
+			if(count($urlsArray) === 0 || $this->stringContainsArrayOneOf($link, $urlsArray) === false){
 				return 'href="'.$link.'"';
 			}
 			
 			if (strpos($link, '#') !== false) {
-			list($link, $hash) = explode('#', $link);
+				list($link, $hash) = explode('#', $link);
 			}
 			$res = parse_url($link);
 			
@@ -49,27 +49,44 @@ new AutoMSCreatorID_Admin();
 				$result .= '//';
 			}
 			if (isset($res['host'])) {
-			$result .= $res['host'];
+				$result .= $res['host'];
 			}
 			if (isset($res['path'])) {
-			$result .= $res['path'];
+				$pathSegments = explode('/', $res['path']);
+				
+				if(count($pathSegments) > 1){
+					if(preg_match('/[a-z]{2}-[a-z]{2}/i', $pathSegments[1])){
+						array_splice($pathSegments, 1, 1);
+					}
+					$result .= implode('/', $pathSegments);
+				} else {
+					$result .= $res['path'];
+				}
 			} else {
-			$result .= '/';
+				$result .= '/';
 			}
 			
 			if (isset($res['query'])) {
-			parse_str($res['query'], $res['query']);
+				parse_str($res['query'], $res['query']);
 			} else {
-			$res['query'] = [];
+				$res['query'] = [];
 			}
+
+			$key = 'WT.mc_id';
+			$secondKey = 'WT_mc_id';
 			
-			$res['query']['WT.mc_id'] = $this->creator_id;
+			if(!array_key_exists($key, $res['query']) && array_key_exists($secondKey, $res['query'])){
+				$res['query'][$key] = $res['query'][$secondKey];
+				unset($res['query'][$secondKey]); 
+			} else if (!array_key_exists($key, $res['query']) && strlen( $this->creator_id ) !== 0){
+				$res['query'][$key] = $this->creator_id;
+			}
 			
 			if (count($res['query']) > 0) {
-			$result .= '?'.http_build_query($res['query']);
+				$result .= '?'.http_build_query($res['query']);
 			}
 			if (isset($hash)) {
-			$result .= '#'.$hash;
+				$result .= '#'.$hash;
 			}
 
 			return 'href="'.$result.'"';
