@@ -55,7 +55,7 @@ new AutoMSCreatorID_Admin();
 				$pathSegments = explode('/', $res['path']);
 				
 				if(count($pathSegments) > 1){
-					if(preg_match('/[a-z]{2}-[a-z]{2}/i', $pathSegments[1])){
+					if(strlen($pathSegments[1]) === 5 && preg_match('/[a-z]{2}-[a-z]{2}/i', $pathSegments[1])){
 						array_splice($pathSegments, 1, 1);
 					}
 					$result .= implode('/', $pathSegments);
