@@ -83,7 +83,7 @@ class AutoMSCreatorID_Admin {
 	}
 
 	public function auto_ms_creator_id_section_info() {
-		
+		echo '<p>These settings will be used by the plugin to add the presented Creator Id to all the urls matching one of the presented urls. The list of urls should be a comma separated list without spaces.</p>';
 	}
 
 	public function creator_id_callback() {
@@ -96,7 +96,7 @@ class AutoMSCreatorID_Admin {
 	public function urls_callback() {
 		printf(
 			'<textarea class="large-text" rows="5" name="auto_ms_creator_id_option_name[urls]" id="urls">%s</textarea>',
-			isset( $this->auto_ms_creator_id_options['urls'] ) ? esc_attr( $this->auto_ms_creator_id_options['urls']) : 'learn.microsoft.com,social.technet.microsoft.com,azure.microsoft.com,techcommunity.microsoft.com,social.msdn.microsoft.com,devblogs.microsoft.com,developer.microsoft.com,channel9.msdn.com,gallery.technet.microsoft.com,cloudblogs.microsoft.com,technet.microsoft.com,docs.azure.cn,www.azure.cn,msdn.microsoft.com,blogs.msdn.microsoft.com,blogs.technet.microsoft.com,microsoft.com/handsonlabs'
+			isset( $this->auto_ms_creator_id_options['urls'] ) ? esc_attr( $this->auto_ms_creator_id_options['urls']) : 'docs.microsoft.com,learn.microsoft.com,social.technet.microsoft.com,azure.microsoft.com,techcommunity.microsoft.com,social.msdn.microsoft.com,devblogs.microsoft.com,developer.microsoft.com,channel9.msdn.com,gallery.technet.microsoft.com,cloudblogs.microsoft.com,technet.microsoft.com,docs.azure.cn,www.azure.cn,msdn.microsoft.com,blogs.msdn.microsoft.com,blogs.technet.microsoft.com,microsoft.com/handsonlabs'
 		);
 	}
 
