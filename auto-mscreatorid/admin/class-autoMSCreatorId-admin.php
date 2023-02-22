@@ -7,7 +7,7 @@ class AutoMSCreatorID_Admin {
 		add_action( 'admin_menu', array( $this, 'auto_ms_creator_id_add_plugin_page' ) );
 		add_action( 'admin_init', array( $this, 'auto_ms_creator_id_page_init' ) );
 
-		add_filter( 'plugin_action_links_auto-mscreatorid/autoMSCreatorId.php', array($this, 'AutoMSCreatorID_settings_link') );
+		add_filter( 'plugin_action_links_auto-ms-creator-id/autoMSCreatorId.php', array($this, 'AutoMSCreatorID_settings_link') );
 	}
 
 	public function auto_ms_creator_id_add_plugin_page() {

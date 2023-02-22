@@ -1,6 +1,6 @@
 === Auto MS CreatorID ===
 Contributors: Benedikt Bergmann
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Tags: MS, Creator Id
 Requires at least: 5.4
 Tested up to: 6.1
