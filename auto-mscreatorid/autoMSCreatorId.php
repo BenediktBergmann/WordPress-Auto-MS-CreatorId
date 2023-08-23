@@ -3,7 +3,7 @@
  * Plugin Name: Auto MS Creator ID
  * Plugin URI:  https://github.com/BenediktBergmann/WordPress-Anchor-Plugin
  * Description: Adds creator ID to every applicable link.
- * Version:     1.0.2
+ * Version:     1.0.3
  * Author:      Benedikt Bergmann
  * Author URI:  https://benediktbergmann.eu
  * Text Domain: Auto-MSCreatorID 
